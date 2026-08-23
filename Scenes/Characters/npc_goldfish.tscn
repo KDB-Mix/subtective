@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c6ytw22ippe42"]
+
+[ext_resource type="Texture2D" uid="uid://spp1c50oqwr0" path="res://Sprites/Characters/NPCs/NPC gold fish.png" id="1_fbb0t"]
+[ext_resource type="Script" uid="uid://3b6oa8iao3yd" path="res://Scripts/Characters/npc_goldfish.gd" id="1_k4e2f"]
+[ext_resource type="Texture2D" uid="uid://cxaewlvwl18ym" path="res://Sprites/icons/icons.png" id="2_hcpvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iilk7"]
+size = Vector2(23, 14)
+
+[node name="NPC goldfish" type="Area2D" unique_id=500967650]
+script = ExtResource("1_k4e2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1961459886]
+texture = ExtResource("1_fbb0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764596024]
+position = Vector2(-12.5, 0)
+shape = SubResource("RectangleShape2D_iilk7")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=918701326]
+visible = false
+z_index = -1
+position = Vector2(-1, -10)
+texture = ExtResource("2_hcpvj")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

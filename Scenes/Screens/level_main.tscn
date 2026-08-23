@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://df5csqjd1f5n8"]
+
+[ext_resource type="Script" uid="uid://cshfi4ng35fmp" path="res://Scripts/Screens/level_main.gd" id="1_37g7d"]
+[ext_resource type="PackedScene" uid="uid://b1yibdrpsnbqs" path="res://Scenes/Characters/player.tscn" id="1_i4pu3"]
+[ext_resource type="Texture2D" uid="uid://kxbtmncbqlus" path="res://icon.svg" id="2_syq3f"]
+[ext_resource type="PackedScene" uid="uid://c6ytw22ippe42" path="res://Scenes/Characters/npc_goldfish.tscn" id="3_syq3f"]
+[ext_resource type="PackedScene" uid="uid://gkumsxgqh72h" path="res://Scenes/UI/dialoug.tscn" id="4_rsijv"]
+
+[node name="Level main" type="Node2D" unique_id=1328973903]
+script = ExtResource("1_37g7d")
+
+[node name="Player" parent="." unique_id=455798391 instance=ExtResource("1_i4pu3")]
+z_index = 1
+position = Vector2(7, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2046440787]
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera2D" unique_id=1134004135]
+show_behind_parent = true
+z_index = -100
+z_as_relative = false
+offset_left = -183.0
+offset_top = -103.0
+offset_right = 232.0
+offset_bottom = 83.0
+color = Color(0, 0, 0.5058824, 1)
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=255873328]
+position = Vector2(-78, -7)
+texture = ExtResource("2_syq3f")
+
+[node name="NPC goldfish" parent="." unique_id=500967650 instance=ExtResource("3_syq3f")]
+position = Vector2(57, -13)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=224450263]
+
+[node name="Dialoug" parent="CanvasLayer" unique_id=146016155 instance=ExtResource("4_rsijv")]

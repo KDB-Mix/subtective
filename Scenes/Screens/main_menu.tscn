@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cajl47rbn3xo2"]
+
+[ext_resource type="Script" uid="uid://cnsdc72x8webq" path="res://Scripts/Screens/main_menu.gd" id="1_5ewdl"]
+[ext_resource type="FontFile" uid="uid://msdw5lxgwsys" path="res://Fonts/Bore Blasters All Caps 16.ttf" id="1_7uq44"]
+
+[node name="Main Menu" type="CanvasLayer" unique_id=761748357]
+script = ExtResource("1_5ewdl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=618819890]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1893805022]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=438753207]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7uq44")
+text = "Underwater
+deceiver"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=300026207]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=124360577]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(0.4606822, 0.45879155, 0.025289245, 1)
+theme_override_colors/font_hover_color = Color(0.7008162, 0.7008166, 0, 1)
+theme_override_fonts/font = ExtResource("1_7uq44")
+text = "Start"
+flat = true
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=42906476]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(0.4606822, 0.45879155, 0.025289245, 1)
+theme_override_colors/font_hover_color = Color(0.7008162, 0.7008166, 0, 1)
+theme_override_fonts/font = ExtResource("1_7uq44")
+text = "Exit
+"
+flat = true
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_button_down"]
