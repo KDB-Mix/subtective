@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c85xell2x5ivu" path="res://Sprites/Characters/Player/Player.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://dl7ligpxl2acm" path="res://Scripts/Characters/player.gd" id="1_40svl"]
+[ext_resource type="Texture2D" uid="uid://bs1ghj274ngya" path="res://Sprites/Items/minigun attachement.png" id="3_al8ar"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_iilk7"]
 diffuse_texture = ExtResource("1_3etf2")
@@ -49,6 +50,39 @@ _data = {
 radius = 4.0
 height = 12.0
 
+[sub_resource type="Gradient" id="Gradient_40svl"]
+offsets = PackedFloat32Array(0, 0.28901735, 0.34104046, 0.40462428, 0.43063584, 1)
+colors = PackedColorArray(0, 1, 1, 0.18039216, 0, 1, 1, 0.13333334, 0.03529412, 1, 1, 1, 0.03529412, 1, 1, 1, 0.03529412, 1, 1, 0, 0.03529412, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iilk7"]
+gradient = SubResource("Gradient_40svl")
+width = 7
+height = 7
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy20a"]
+atlas = ExtResource("3_al8ar")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqrjx"]
+atlas = ExtResource("3_al8ar")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40svl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy20a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqrjx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=455798391]
 collision_layer = 2
 script = ExtResource("1_40svl")
@@ -66,3 +100,21 @@ autoplay = &"Moving"
 position = Vector2(1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2rs3d")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=429104676]
+show_behind_parent = true
+position = Vector2(-6, 0)
+emitting = false
+amount = 3
+texture = SubResource("GradientTexture2D_iilk7")
+lifetime = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(1, 2.5)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+
+[node name="minigun" type="AnimatedSprite2D" parent="." unique_id=1064354007]
+show_behind_parent = true
+position = Vector2(9, 0)
+sprite_frames = SubResource("SpriteFrames_40svl")
