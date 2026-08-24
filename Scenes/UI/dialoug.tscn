@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cp3fcne6wqw1b" path="res://Sprites/UI/Dialoug.png" id="1_dv6uo"]
 [ext_resource type="Script" uid="uid://crnr2oaek6let" path="res://Scripts/UI/dialoug.gd" id="2_4icc0"]
-[ext_resource type="FontFile" uid="uid://msdw5lxgwsys" path="res://Fonts/Bore Blasters All Caps 16.ttf" id="3_qs7to"]
+[ext_resource type="FontFile" uid="uid://b04mtfceyq5mv" path="res://Fonts/512x8Serif.ttf" id="3_4icc0"]
 
 [node name="Dialoug" type="NinePatchRect" unique_id=146016155]
 anchors_preset = -1
-anchor_top = 0.6
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.02
+anchor_top = 0.5
+anchor_right = 0.98
+anchor_bottom = 0.97
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_dv6uo")
@@ -32,6 +33,6 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Text" type="RichTextLabel" parent="MarginContainer" unique_id=591074458]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_qs7to")
+theme_override_fonts/normal_font = ExtResource("3_4icc0")
 theme_override_font_sizes/normal_font_size = 8
 visible_characters_behavior = 1

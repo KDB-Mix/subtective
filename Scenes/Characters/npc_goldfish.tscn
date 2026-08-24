@@ -8,6 +8,7 @@
 size = Vector2(23, 14)
 
 [node name="NPC goldfish" type="Area2D" unique_id=500967650]
+collision_mask = 2
 script = ExtResource("1_k4e2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1961459886]
