@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://3yucjhgixtsl" path="res://Scripts/Items/key.gd" id="1_675al"]
 [ext_resource type="Texture2D" uid="uid://ciyrc3jc6ybt2" path="res://Sprites/keys.png" id="1_n77a6"]
 [ext_resource type="Texture2D" uid="uid://cxaewlvwl18ym" path="res://Sprites/icons/icons.png" id="2_d5hcr"]
+[ext_resource type="AudioStream" uid="uid://djokegh46gws" path="res://SFX/key.mp3" id="4_vfxm1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iilk7"]
 size = Vector2(24, 26)
@@ -22,6 +23,10 @@ texture = ExtResource("2_d5hcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362159023]
 shape = SubResource("RectangleShape2D_iilk7")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." unique_id=1921342096]
+stream = ExtResource("4_vfxm1")
+volume_db = -10.906
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

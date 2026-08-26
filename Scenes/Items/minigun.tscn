@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://t1u6aeqnpt6a"]
+
+[ext_resource type="Script" uid="uid://dfqrp8lfqdoik" path="res://Scripts/Items/minigun.gd" id="1_mg6dc"]
+[ext_resource type="Texture2D" uid="uid://bs1ghj274ngya" path="res://Sprites/Items/minigun attachement.png" id="2_s3by3"]
+[ext_resource type="Texture2D" uid="uid://cxaewlvwl18ym" path="res://Sprites/icons/icons.png" id="3_45qb0"]
+[ext_resource type="AudioStream" uid="uid://djokegh46gws" path="res://SFX/key.mp3" id="4_p40qp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3by3"]
+size = Vector2(40, 32)
+
+[node name="Minigun" type="Area2D" unique_id=527202222]
+collision_mask = 2
+script = ExtResource("1_mg6dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510371007]
+texture = ExtResource("2_s3by3")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=130722515]
+shape = SubResource("RectangleShape2D_s3by3")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=389611657]
+visible = false
+position = Vector2(0, -9)
+texture = ExtResource("3_45qb0")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." unique_id=1779806414]
+stream = ExtResource("4_p40qp")
+volume_db = -10.906
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

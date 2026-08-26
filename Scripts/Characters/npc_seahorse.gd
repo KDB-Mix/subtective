@@ -13,6 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		icon.visible = true
 		player = body
+		player.is_in_dialogue = true
 
 
 func _on_body_exited(body: Node2D) -> void:
@@ -21,6 +22,7 @@ func _on_body_exited(body: Node2D) -> void:
 		dialoug.visible = false
 		current_dialoug = -1
 		player.multiplier = Vector2(1, 1)
+		player.is_in_dialogue = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Dialoug"):

@@ -2,9 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cnsdc72x8webq" path="res://Scripts/Screens/main_menu.gd" id="1_5ewdl"]
 [ext_resource type="FontFile" uid="uid://msdw5lxgwsys" path="res://Fonts/Bore Blasters All Caps 16.ttf" id="1_7uq44"]
+[ext_resource type="Texture2D" uid="uid://b4grvjiwdncn3" path="res://Sprites/bg.png" id="2_2yntn"]
 
 [node name="Main Menu" type="CanvasLayer" unique_id=761748357]
 script = ExtResource("1_5ewdl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=399711121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.5058824, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=731799823]
+offset_left = -35.0
+offset_top = -150.0
+offset_right = 285.0
+offset_bottom = 170.0
+texture = ExtResource("2_2yntn")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=618819890]
 anchors_preset = 15
@@ -23,8 +39,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=438753207]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_7uq44")
-text = "Underwater
-deceiver"
+text = "
+subtective"
 horizontal_alignment = 1
 vertical_alignment = 1
 

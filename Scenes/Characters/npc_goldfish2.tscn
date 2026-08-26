@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bi3og5c0g8pqt"]
+
+[ext_resource type="Script" uid="uid://bjdnvh7wvs7ek" path="res://Scripts/Characters/npc_goldfish_2.gd" id="1_xsw3k"]
+[ext_resource type="Texture2D" uid="uid://spp1c50oqwr0" path="res://Sprites/Characters/NPCs/NPC gold fish.png" id="2_hg76v"]
+[ext_resource type="Texture2D" uid="uid://cxaewlvwl18ym" path="res://Sprites/icons/icons.png" id="3_g272f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iilk7"]
+size = Vector2(62, 24)
+
+[sub_resource type="Animation" id="Animation_xsw3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hg76v"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g272f"]
+resource_name = "run away"
+length = 0.5000033594105393
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.50000334),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ard6a"]
+_data = {
+&"RESET": SubResource("Animation_xsw3k"),
+&"default": SubResource("Animation_hg76v"),
+&"run away": SubResource("Animation_g272f")
+}
+
+[node name="NPC goldfish2" type="Area2D" unique_id=500967650]
+collision_mask = 2
+script = ExtResource("1_xsw3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1961459886]
+texture = ExtResource("2_hg76v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764596024]
+position = Vector2(-25, 0)
+shape = SubResource("RectangleShape2D_iilk7")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=918701326]
+visible = false
+z_index = -1
+position = Vector2(-1, -10)
+texture = ExtResource("3_g272f")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=463638307]
+libraries/ = SubResource("AnimationLibrary_ard6a")
+autoplay = &"default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

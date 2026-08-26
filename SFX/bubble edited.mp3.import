@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://deyot301eecji"
+path="res://.godot/imported/bubble edited.mp3-dc00ac163c40e90c3b37e29dd5ebf7ae.mp3str"
+
+[deps]
+
+source_file="res://SFX/bubble edited.mp3"
+dest_files=["res://.godot/imported/bubble edited.mp3-dc00ac163c40e90c3b37e29dd5ebf7ae.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

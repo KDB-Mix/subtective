@@ -7,15 +7,23 @@ extends Node2D
 @onready var deadend: Area2D = $deadend
 @onready var vortex: Area2D = $Vortex
 @onready var deadend_2: Area2D = $deadend2
+@onready var win_text: Label = $"CanvasLayer/Win Text"
+@onready var click: AudioStreamPlayer2D = $click
+
+var main_menu: PackedScene = load("res://Scenes/Screens/main_menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dialoug.visible = false
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if dialoug.text.text.length()-1 > dialoug.text.visible_characters && dialoug.text.visible_characters > -1:
+		if !click.playing: click.play()
+	else:
+		click.stop()
 
 
 func _on_unlock_area_body_entered(body: Node2D) -> void:
@@ -49,3 +57,9 @@ func _on_deadend_2_body_entered(body: Node2D) -> void:
 		var player: Player = body
 		player.items_owned.append("wrong_path")
 		deadend_2.call_deferred("queue_free")
+
+
+func _on_win_body_entered(body: Node2D) -> void:
+	win_text.visible = true
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_packed(main_menu)

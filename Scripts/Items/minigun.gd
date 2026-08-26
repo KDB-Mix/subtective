@@ -1,6 +1,5 @@
 extends Area2D
 
-@export var id = "fake_key"
 var player:Player
 @onready var icon: Sprite2D = $icon
 @onready var sfx: AudioStreamPlayer2D = $sfx
@@ -29,7 +28,7 @@ func _on_body_exited(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Dialoug"):
 		if has_overlapping_bodies():
-			player.items_owned.append(id)
+			player.has_minigun = true
 			sfx.play()
 			visible = false
 			collision_shape_2d.disabled = true

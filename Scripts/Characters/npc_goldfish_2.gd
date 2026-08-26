@@ -2,9 +2,14 @@ extends Area2D
 
 @onready var icon: Sprite2D = $Icon
 @onready var dialoug: NinePatchRect = $"../CanvasLayer/Dialoug"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var dialougs: Array[String] = ["Hello", "How are you?", "Looks like you're stuck", "Luckly, there is a portal to get you out", "Just  head strait, the locals will guide you", "Be careful, a lot will lie to you, don't trust everyone", "Good luck"]
-var external_dialougs: Array[String] = ["Still here?", "Go ahead", "Start your journey", "(silent)", "Uhhh, nothing to do here for now"]
+var dialougs: Array[String] = ["Haha", 
+"Did you think i will let you in?", 
+"I closed it with rocks",
+"The only way through", 
+"Is to explode it", 
+"Hahaha"]
 var current_dialoug: int = -1
 var finished = false
 var player: Player
@@ -33,6 +38,7 @@ func _input(event: InputEvent) -> void:
 					current_dialoug = -1
 					finished = true
 					player.multiplier = Vector2(1, 1)
+					animation_player.play("run away")
 				elif current_dialoug == -1 || dialoug.text.visible_characters >= dialoug.text.text.length():
 					current_dialoug += 1
 					dialoug.text.text = dialougs.get(current_dialoug)
@@ -42,16 +48,4 @@ func _input(event: InputEvent) -> void:
 					player.sprite.flip_h = false
 				elif dialoug.text.visible_characters < dialoug.text.text.length():
 					dialoug.text.visible_characters = dialoug.text.text.length()
-			else:
-				if current_dialoug != -1:
-					dialoug.visible = false
-					current_dialoug = -1
-					player.multiplier = Vector2(1, 1)
-				elif current_dialoug == -1:
-					current_dialoug = randi_range(0, external_dialougs.size()-1)
-					dialoug.text.text = external_dialougs.get(current_dialoug)
-					dialoug.text.visible_characters = 0
-					dialoug.visible = true
-					player.multiplier = Vector2.ZERO
-					player.sprite.flip_h = false
 		
