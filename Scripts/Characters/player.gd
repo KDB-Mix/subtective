@@ -19,6 +19,9 @@ var has_minigun = false
 var is_in_dialogue = false
 @onready var explosion: AudioStreamPlayer2D = $Explosion
 @onready var bubble: AudioStreamPlayer2D = $bubble
+var inPortal: bool = false
+var portalPos: Vector2
+@onready var fade_animation_player: AnimationPlayer = $FadeAnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -52,6 +55,10 @@ func _physics_process(delta: float) -> void:
 	if inVortex:
 		velocity.x = lerp(velocity.x, (vortex_x-global_position.x)*100, .05)
 		velocity.y = lerp(velocity.y, 150.0, .2)
+		
+	if inPortal:
+		velocity.x = lerp(velocity.x, (portalPos.x-global_position.x)*100, .05)
+		velocity.y = lerp(velocity.y, (portalPos.y-global_position.y)*100, .05)
 	
 	if sprite.flip_h:
 		minigun.flip_h = true
