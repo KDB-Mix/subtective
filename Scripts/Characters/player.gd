@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_axis("Move up", "Move down")
 	direction *= multiplier
 	animation_tree.speed_scale = direction.x
-	if direction.x == -1:
+	if direction.x < 0:
 		sprite.flip_h = true
 		minigun.flip_h = true
 		minigun.position.x = -9
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		cpu_particles_2d.emitting = true
 		bullet_ray.target_position.x = -60
 		if !bubble.playing: bubble.play()
-	elif direction.x == 1:
+	elif direction.x > 0:
 		minigun.flip_h = false
 		minigun.position.x = 9
 		sprite.flip_h = false

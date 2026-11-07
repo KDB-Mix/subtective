@@ -11,13 +11,17 @@ extends Node2D
 @onready var click: AudioStreamPlayer2D = $click
 @onready var win: Area2D = $Win
 @onready var yay: CPUParticles2D = $Win/Yay
+@onready var virtual_joystick: VirtualJoystick = $"Touch screen/VirtualJoystick"
+@onready var button: TouchScreenButton = $"Touch screen/Button"
 
 var main_menu: PackedScene = load("res://Scenes/Screens/main_menu.tscn")
 
+var dialogue_event = InputEventAction.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	dialogue_event.action = "Dialoug"
 	dialoug.visible = false
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +30,7 @@ func _process(delta: float) -> void:
 		if !click.playing: click.play()
 	else:
 		click.stop()
+	
 
 
 func _on_unlock_area_body_entered(body: Node2D) -> void:

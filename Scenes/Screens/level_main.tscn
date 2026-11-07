@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://brq0t87sf5ftg" path="res://Sprites/Items/portal.png" id="17_qjm1w"]
 [ext_resource type="AudioStream" uid="uid://dfyw0w01al11m" path="res://SFX/click edited.mp3" id="21_6a6lb"]
 [ext_resource type="Texture2D" uid="uid://b4grvjiwdncn3" path="res://Sprites/bg.png" id="22_102ae"]
+[ext_resource type="Theme" uid="uid://bkcutrkjkm4me" path="res://themes/Main.tres" id="23_5mvie"]
+[ext_resource type="Texture2D" uid="uid://cxaewlvwl18ym" path="res://Sprites/icons/icons.png" id="24_s75l2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71e3l"]
 texture = ExtResource("6_5o4v7")
@@ -867,6 +869,10 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_apvqp"]
+atlas = ExtResource("24_s75l2")
+region = Rect2(0, 0, 8, 8)
+
 [node name="Level main" type="Node2D" unique_id=1328973903]
 script = ExtResource("1_37g7d")
 metadata/_edit_vertical_guides_ = [2743.0]
@@ -1108,6 +1114,31 @@ repeat_times = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1443359109]
 texture = ExtResource("22_102ae")
+
+[node name="Touch screen" type="CanvasLayer" parent="." unique_id=281064227]
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="Touch screen" unique_id=881716444]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("23_5mvie")
+joystick_mode = 1
+joystick_size = 16.0
+tip_size = 8.0
+action_left = &"Move left"
+action_right = &"Move right"
+action_up = &"Move up"
+action_down = &"Move down"
+visibility_mode = 1
+
+[node name="Button" type="TouchScreenButton" parent="Touch screen" unique_id=1011624407]
+position = Vector2(2, 37)
+texture_normal = SubResource("AtlasTexture_apvqp")
+action = "Dialoug"
+visibility_mode = 1
 
 [connection signal="body_entered" from="Locked door/Unlock area" to="." method="_on_unlock_area_body_entered"]
 [connection signal="body_entered" from="deadend" to="." method="_on_deadend_body_entered"]
