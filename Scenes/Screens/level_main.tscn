@@ -1048,7 +1048,7 @@ offset_bottom = 181.0
 theme_override_fonts/normal_font = ExtResource("16_iida8")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "Click [img]res://Sprites/icons/icons.png[/img] to shoot"
+text = "Click [img]res://Sprites/icons/icon x.png[/img] to shoot"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=458252304]
 offset_left = 3233.0
